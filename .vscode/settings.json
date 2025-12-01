@@ -1,32 +1,73 @@
 {
-    // Настройки переноса слов
- 	"editor.wordWrap": "bounded",
- 	"editor.wrappingIndent": "same",
-	"editor.wordWrapColumn": 120,
-	"editor.rulers": [120],
+  // Настройки переноса слов
+  "editor.wordWrap": "bounded",
+  "editor.wrappingIndent": "same",
+  "editor.wordWrapColumn": 120,
+  "editor.rulers": [120],
 
-    // Настройки курсора
-	"editor.cursorBlinking": "expand",
-	"editor.cursorStyle": "line-thin",
-	"editor.cursorSmoothCaretAnimation": "explicit",
+  // Настройки курсора
+  "editor.cursorBlinking": "expand",
+  "editor.cursorStyle": "line-thin",
+  "editor.cursorSmoothCaretAnimation": "explicit",
 
-    // Автоматическое закрытие тегов
-	"html.autoClosingTags": true,
-	"javascript.autoClosingTags": true,
-	"typescript.autoClosingTags": true,
+  // Автоматическое закрытие тегов
+  "html.autoClosingTags": true,
+  "javascript.autoClosingTags": true,
+  "typescript.autoClosingTags": true,
 
-	// Основные настройки
-	"editor.smoothScrolling": true,
-	"editor.minimap.enabled": false,
-	"editor.multiCursorModifier": "ctrlCmd",
+  // Основные настройки
+  "editor.smoothScrolling": true,
+  "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "ctrlCmd",
 
-	// Связанные редактирование тегов
-	"editor.linkedEditing": true,
+  // Связанные редактирование тегов
+  "editor.linkedEditing": true,
 
-	"editor.glyphMargin": false,
-	"editor.folding": false,
+  "editor.glyphMargin": false,
+  "editor.folding": false,
 
-	// Настройка обозревателя
-	"workbench.editor.wrapTabs": true,
-    "workbench.editor.tabSizing": "fit",
+  // Настройка обозревателя
+  "workbench.editor.wrapTabs": true,
+  "workbench.editor.tabSizing": "fit",
+
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "files.autoSave": "onFocusChange",
+
+	"files.associations": {
+		".prettierignore": "plaintext",
+		".eslintignore": "plaintext",
+		".gitignore": "plaintext"
+	},
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true
+	},
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/node_modules/*/**": true,
+		"**/.hg/store/**": true
+	}
 }

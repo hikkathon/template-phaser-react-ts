@@ -23,11 +23,7 @@ export const UIGame: React.FC<UIContainerProps> = ({
         </button>
       </div>
       <div>
-        <button 
-          disabled={canMoveSprite} 
-          className="button" 
-          onClick={onMoveSprite}
-        >
+        <button disabled={canMoveSprite} className="button" onClick={onMoveSprite}>
           Toggle Movement
         </button>
       </div>
