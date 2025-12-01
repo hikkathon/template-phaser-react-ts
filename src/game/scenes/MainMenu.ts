@@ -9,6 +9,8 @@ export class MainMenu extends BaseScene {
   title: GameObjects.Text;
   logoTween: Phaser.Tweens.Tween | null = null;
 
+  private checked: boolean;
+
   logoCallback: ((p: { x: number; y: number }) => void) | null = null;
 
   constructor() {
@@ -35,7 +37,24 @@ export class MainMenu extends BaseScene {
     super.create();
 
     EventBus.emit('current-scene-ready', this);
+    EventBus.on('toggle-movement-mode', this.toggleMovementMode);
   }
+
+  toggleMovementMode = (checked: boolean) => {
+    this.checked = checked;
+
+    const tweenExists = !!this.logoTween;
+
+    if (checked) {
+      if (tweenExists) {
+        this.logoTween?.resume();
+      } else {
+        this.moveLogoTween(this.logoCallback ?? (() => {}));
+      }
+    } else {
+      this.logoTween?.pause();
+    }
+  };
 
   // Переопределяем метод для конкретной логики этой сцены
   override refreshLayout(): void {
@@ -61,7 +80,9 @@ export class MainMenu extends BaseScene {
         .setFontSize(48 * this._scale);
     }
 
-    this.restartLogoTween();
+    if (this.checked) {
+      this.restartLogoTween();
+    }
   }
 
   changeScene(): void {
