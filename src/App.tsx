@@ -1,9 +1,11 @@
 import { IRefPhaserGame, PhaserGame } from '@/components/PhaserGame';
 import { UIGame } from '@/components/UIGame';
 import { MainMenu } from '@/game/scenes/MainMenu';
+import '@/styles/globals.css';
 import { useRef, useState } from 'react';
 
 export const App = (): React.ReactNode => {
+  const [isMovementModeActive, setIsMovementModeActive] = useState(false);
   const [canMoveSprite, setCanMoveSprite] = useState(true);
 
   const phaserRef = useRef<IRefPhaserGame | null>(null);
@@ -14,6 +16,7 @@ export const App = (): React.ReactNode => {
       const scene = phaserRef.current.scene as MainMenu;
       if (scene) {
         scene.changeScene();
+        setIsMovementModeActive(false);
       }
     }
   };
@@ -27,6 +30,11 @@ export const App = (): React.ReactNode => {
         });
       }
     }
+  };
+
+  const toggleMovementMode = (checked: boolean) => {
+    setIsMovementModeActive(checked);
+    moveSprite();
   };
 
   const addSprite = () => {
@@ -51,6 +59,7 @@ export const App = (): React.ReactNode => {
   };
 
   const currentScene = (scene: Phaser.Scene) => {
+    setIsMovementModeActive(false);
     setCanMoveSprite(scene.scene.key !== 'MainMenu');
   };
 
@@ -59,10 +68,11 @@ export const App = (): React.ReactNode => {
       <PhaserGame ref={phaserRef} currentActiveScene={currentScene} />
       <UIGame
         onChangeScene={changeScene}
-        onMoveSprite={moveSprite}
         onAddSprite={addSprite}
-        canMoveSprite={canMoveSprite}
+        isMovementModeActive={isMovementModeActive}
+        onToggleMovementMode={toggleMovementMode}
         spritePosition={spritePosition}
+        canMoveSprite={canMoveSprite}
       />
     </div>
   );

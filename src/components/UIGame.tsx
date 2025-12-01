@@ -1,40 +1,51 @@
-import React from 'react';
+import { Button } from './ui/button';
+import { Card } from './ui/card';
+import { Label } from './ui/label';
+import { Switch } from './ui/switch';
 
 interface UIContainerProps {
   onChangeScene: () => void;
-  onMoveSprite: () => void;
+  isMovementModeActive: boolean;
   onAddSprite: () => void;
-  canMoveSprite: boolean;
+  onToggleMovementMode: (checked: boolean) => void;
   spritePosition: { x: number; y: number };
+  canMoveSprite: boolean;
 }
 
 export const UIGame: React.FC<UIContainerProps> = ({
   onChangeScene,
-  onMoveSprite,
+  isMovementModeActive,
   onAddSprite,
-  canMoveSprite,
+  onToggleMovementMode,
   spritePosition,
+  canMoveSprite,
 }) => {
   return (
     <div id="ui-container">
-      <div>
-        <button className="button" onClick={onChangeScene}>
+      <div className="flex flex-wrap items-center flex-row p-2">
+        <Button variant="outline" onClick={onChangeScene}>
           Change Scene
-        </button>
+        </Button>
       </div>
-      <div>
-        <button disabled={canMoveSprite} className="button" onClick={onMoveSprite}>
-          Toggle Movement
-        </button>
+      <div className="flex flex-wrap items-center flex-row p-2 gap-2">
+        <Switch
+          disabled={canMoveSprite}
+          checked={isMovementModeActive}
+          onCheckedChange={onToggleMovementMode}
+          id="airplane-mode"
+        />
+        <Label htmlFor="airplane-mode">Movement Mode</Label>
       </div>
-      <div className="spritePosition">
-        Sprite Position:
-        <pre>{`{\n  x: ${spritePosition.x}\n  y: ${spritePosition.y}\n}`}</pre>
+      <div className="flex flex-col items-start p-2 gap-2">
+        <Label htmlFor="airplane-mode">Sprite Position:</Label>
+        <Card className="p-2">
+          <pre>{`x: ${spritePosition.x} y: ${spritePosition.y}`}</pre>
+        </Card>
       </div>
-      <div>
-        <button className="button" onClick={onAddSprite}>
+      <div className="flex flex-wrap items-center flex-row p-2">
+        <Button variant="outline" onClick={onAddSprite}>
           Add New Sprite
-        </button>
+        </Button>
       </div>
     </div>
   );
