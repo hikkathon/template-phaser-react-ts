@@ -18,12 +18,11 @@ export class GameOver extends BaseScene {
     this.background.setAlpha(0.5);
 
     this.gameOverText = this.add
-      .text(512, 384, 'Game Over', {
+      .text(0, 0, 'Game Over', {
         fontFamily: 'Verdana, sans-serif',
         fontSize: 64,
         color: '#ffffff',
         stroke: '#000000',
-        strokeThickness: 4,
         align: 'center',
       })
       .setOrigin(0.5)

@@ -23,7 +23,6 @@ export class Game extends BaseScene {
         fontSize: 38,
         color: '#ffffff',
         stroke: '#000000',
-        strokeThickness: 4,
         align: 'center',
       })
       .setOrigin(0.5)
