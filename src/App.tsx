@@ -3,6 +3,7 @@ import { UIGame } from '@/components/UIGame';
 import { MainMenu } from '@/game/scenes/MainMenu';
 import '@/styles/globals.css';
 import { useRef, useState } from 'react';
+import { EventBus } from './game/EventBus';
 
 export const App = (): React.ReactNode => {
   const [isMovementModeActive, setIsMovementModeActive] = useState(false);
@@ -35,6 +36,7 @@ export const App = (): React.ReactNode => {
   const toggleMovementMode = (checked: boolean) => {
     setIsMovementModeActive(checked);
     moveSprite();
+    EventBus.emit('toggle-movement-mode', checked);
   };
 
   const addSprite = () => {
