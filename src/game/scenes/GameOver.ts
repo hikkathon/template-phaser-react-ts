@@ -2,42 +2,47 @@ import { EventBus } from '../EventBus';
 import { BaseScene } from './BaseScene';
 
 export class GameOver extends BaseScene {
-    camera: Phaser.Cameras.Scene2D.Camera;
-    background: Phaser.GameObjects.Image;
-    gameOverText : Phaser.GameObjects.Text;
+  camera: Phaser.Cameras.Scene2D.Camera;
+  background: Phaser.GameObjects.Image;
+  gameOverText: Phaser.GameObjects.Text;
 
-    constructor () {
-        super('GameOver');
-    }
+  constructor() {
+    super('GameOver');
+  }
 
-    create (): void {
-        this.camera = this.cameras.main
-        this.camera.setBackgroundColor(0xff0000);
+  create(): void {
+    this.camera = this.cameras.main;
+    this.camera.setBackgroundColor(0xff0000);
 
-        this.background = this.add.image(0, 0, 'background');
-        this.background.setAlpha(0.5);
+    this.background = this.add.image(0, 0, 'background');
+    this.background.setAlpha(0.5);
 
-        this.gameOverText = this.add.text(512, 384, 'Game Over', {
-            fontFamily: 'Verdana, sans-serif', fontSize: 64, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 4,
-            align: 'center'
-        }).setOrigin(0.5).setDepth(100);
-        
-        super.create();
+    this.gameOverText = this.add
+      .text(512, 384, 'Game Over', {
+        fontFamily: 'Verdana, sans-serif',
+        fontSize: 64,
+        color: '#ffffff',
+        stroke: '#000000',
+        strokeThickness: 4,
+        align: 'center',
+      })
+      .setOrigin(0.5)
+      .setDepth(100);
 
-        EventBus.emit('current-scene-ready', this);
-    }
+    super.create();
 
-    changeScene (): void {
-        this.scene.start('MainMenu');
-    }
+    EventBus.emit('current-scene-ready', this);
+  }
 
-    override refreshLayout (): void {
-        if (!this.background || !this.gameOverText) return;
+  changeScene(): void {
+    this.scene.start('MainMenu');
+  }
 
-        this.setBackgroundCover(this.background);        
+  override refreshLayout(): void {
+    if (!this.background || !this.gameOverText) return;
 
-        this.gameOverText.setPosition(this.centerX, this.centerY)
-                         .setFontSize(64 * this._scale);
-    }
+    this.setBackgroundCover(this.background);
+
+    this.gameOverText.setPosition(this.centerX, this.centerY).setFontSize(64 * this._scale);
+  }
 }

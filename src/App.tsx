@@ -1,11 +1,11 @@
-import { useRef, useState } from 'react';
 import { IRefPhaserGame, PhaserGame } from '@/components/PhaserGame';
-import { MainMenu } from '@/game/scenes/MainMenu';
 import { UIGame } from '@/components/UIGame';
+import { MainMenu } from '@/game/scenes/MainMenu';
+import { useRef, useState } from 'react';
 
 export const App = (): React.ReactNode => {
   const [canMoveSprite, setCanMoveSprite] = useState(true);
-  
+
   const phaserRef = useRef<IRefPhaserGame | null>(null);
   const [spritePosition, setSpritePosition] = useState({ x: 0, y: 0 });
 
@@ -66,4 +66,4 @@ export const App = (): React.ReactNode => {
       />
     </div>
   );
-}
+};
