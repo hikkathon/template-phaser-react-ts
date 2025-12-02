@@ -18,6 +18,7 @@ export const App = (): React.ReactNode => {
       if (scene) {
         scene.changeScene();
         setIsMovementModeActive(false);
+        setSpritePosition({ x: 0, y: 0 });
       }
     }
   };

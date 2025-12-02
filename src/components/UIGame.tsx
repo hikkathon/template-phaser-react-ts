@@ -1,5 +1,4 @@
 import { Button } from './ui/button';
-import { Card } from './ui/card';
 import { Label } from './ui/label';
 import { Switch } from './ui/switch';
 
@@ -22,9 +21,12 @@ export const UIGame: React.FC<UIContainerProps> = ({
 }) => {
   return (
     <div id="ui-container">
-      <div className="flex flex-wrap items-center flex-row p-2">
+      <div className="flex justify-between items-center flex-row gap-2 p-2">
         <Button variant="outline" onClick={onChangeScene}>
           Change Scene
+        </Button>
+        <Button variant="outline" onClick={onAddSprite}>
+          Add New Sprite
         </Button>
       </div>
       <div className="flex flex-wrap items-center flex-row p-2 gap-2">
@@ -36,16 +38,11 @@ export const UIGame: React.FC<UIContainerProps> = ({
         />
         <Label htmlFor="airplane-mode">Movement Mode</Label>
       </div>
-      <div className="flex flex-col items-start p-2 gap-2">
-        <Label htmlFor="airplane-mode">Sprite Position:</Label>
-        <Card className="p-2">
-          <pre>{`x: ${spritePosition.x} y: ${spritePosition.y}`}</pre>
-        </Card>
-      </div>
-      <div className="flex flex-wrap items-center flex-row p-2">
-        <Button variant="outline" onClick={onAddSprite}>
-          Add New Sprite
-        </Button>
+      <div className="flex justify-start items-start flex-col gap-2 p-2">
+        <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold ">
+          Sprite Position
+          <Label htmlFor="airplane-mode">{` x: ${spritePosition.x} y: ${spritePosition.y}`}</Label>
+        </code>
       </div>
     </div>
   );

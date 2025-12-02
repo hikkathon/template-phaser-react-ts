@@ -65,7 +65,7 @@ export class MainMenu extends BaseScene {
     // --- ЛОГИКА ПЕРЕКЛЮЧЕНИЯ (ПОРТРЕТ / ЛАНДШАФТ) ---
     if (scaleUtils.isPortrait()) {
       // Портрет
-      this.logo.setPosition(this.centerX, scaleUtils.getRelativeY(200)).setScale(this._scale * 1.6);
+      this.logo.setPosition(this.centerX, scaleUtils.getRelativeY(246)).setScale(this._scale * 1.6);
 
       this.title
         .setPosition(this.centerX, scaleUtils.getRelativeY(300))
@@ -98,7 +98,7 @@ export class MainMenu extends BaseScene {
 
     this.logoCallback = callback;
 
-    const relativeOffset = scaleUtils.getRelativeY(20);
+    const relativeOffset = scaleUtils.getRelativeY(10);
 
     if (tween) {
       if (tween.isPlaying()) tween.pause();
