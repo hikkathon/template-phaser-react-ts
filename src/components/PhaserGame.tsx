@@ -1,5 +1,6 @@
 import StartGame from '@/game/main';
 import { forwardRef, useEffect, useLayoutEffect, useRef } from 'react';
+import { GameEvents } from '../game/constants/events';
 import { EventBus } from '../game/core/event-bus';
 
 export interface IRefPhaserGame {
@@ -39,7 +40,7 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(function PhaserGame
   }, [ref]);
 
   useEffect(() => {
-    EventBus.on('current-scene-ready', (scene_instance: Phaser.Scene) => {
+    EventBus.on(GameEvents.SCENE.READY, (scene_instance: Phaser.Scene) => {
       if (currentActiveScene && typeof currentActiveScene === 'function') {
         currentActiveScene(scene_instance);
       }
@@ -51,7 +52,7 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(function PhaserGame
       }
     });
     return () => {
-      EventBus.removeListener('current-scene-ready');
+      EventBus.removeListener(GameEvents.SCENE.READY);
     };
   }, [currentActiveScene, ref]);
 

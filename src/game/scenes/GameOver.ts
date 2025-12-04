@@ -1,3 +1,5 @@
+import { ASSET_KEYS } from '../constants/assets';
+import { GameEvents } from '../constants/events';
 import { SCENE_KEYS } from '../constants/scenes';
 import { EventBus } from '../core/event-bus';
 import { BaseScene } from './BaseScene';
@@ -15,7 +17,7 @@ export class GameOver extends BaseScene {
     this.camera = this.cameras.main;
     this.camera.setBackgroundColor(0xff0000);
 
-    this.background = this.add.image(0, 0, 'background');
+    this.background = this.add.image(0, 0, ASSET_KEYS.BACKGROUND);
     this.background.setAlpha(0.5);
 
     this.gameOverText = this.add
@@ -31,7 +33,7 @@ export class GameOver extends BaseScene {
 
     super.create();
 
-    EventBus.emit('current-scene-ready', this);
+    EventBus.emit(GameEvents.SCENE.READY, this);
   }
 
   changeScene(): void {
