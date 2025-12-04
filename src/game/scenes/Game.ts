@@ -1,4 +1,5 @@
-import { EventBus } from '../EventBus';
+import { SCENE_KEYS } from '../constants/scenes';
+import { EventBus } from '../core/event-bus';
 import { BaseScene } from './BaseScene';
 
 export class Game extends BaseScene {
@@ -7,7 +8,7 @@ export class Game extends BaseScene {
   gameText: Phaser.GameObjects.Text;
 
   constructor() {
-    super('Game');
+    super(SCENE_KEYS.GAME);
   }
 
   create(): void {
@@ -34,7 +35,7 @@ export class Game extends BaseScene {
   }
 
   changeScene(): void {
-    this.scene.start('GameOver');
+    this.scene.start(SCENE_KEYS.GAME_OVER);
   }
 
   override refreshLayout(): void {

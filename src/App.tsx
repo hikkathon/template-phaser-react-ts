@@ -3,7 +3,8 @@ import { UIGame } from '@/components/UIGame';
 import { MainMenu } from '@/game/scenes/MainMenu';
 import '@/styles/globals.css';
 import { useRef, useState } from 'react';
-import { EventBus } from './game/EventBus';
+import { SCENE_KEYS } from './game/constants/scenes';
+import { EventBus } from './game/core/event-bus';
 
 export const App = (): React.ReactNode => {
   const [isMovementModeActive, setIsMovementModeActive] = useState(false);
@@ -26,7 +27,7 @@ export const App = (): React.ReactNode => {
   const moveSprite = () => {
     if (phaserRef.current) {
       const scene = phaserRef.current.scene as MainMenu;
-      if (scene && scene.scene.key === 'MainMenu') {
+      if (scene && scene.scene.key === SCENE_KEYS.MAIN_MENU) {
         scene.moveLogoTween(({ x, y }) => {
           setSpritePosition({ x, y });
         });
@@ -63,7 +64,7 @@ export const App = (): React.ReactNode => {
 
   const currentScene = (scene: Phaser.Scene) => {
     setIsMovementModeActive(false);
-    setCanMoveSprite(scene.scene.key !== 'MainMenu');
+    setCanMoveSprite(scene.scene.key !== SCENE_KEYS.MAIN_MENU);
   };
 
   return (

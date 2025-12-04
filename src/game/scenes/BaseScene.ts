@@ -1,5 +1,5 @@
-import { scaleUtils } from '@/utils/ScaleUtils';
 import { GameObjects, Scene } from 'phaser';
+import { scaleUtils } from '../utils/scale-utils';
 
 export class BaseScene extends Scene {
   protected centerX: number = 0;

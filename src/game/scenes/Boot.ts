@@ -1,9 +1,10 @@
-import { scaleUtils } from '@/utils/ScaleUtils';
+import { scaleUtils } from '../utils/scale-utils';
+import { SCENE_KEYS } from '../constants/scenes';
 import { BaseScene } from './BaseScene';
 
 export class Boot extends BaseScene {
   constructor() {
-    super('Boot');
+    super(SCENE_KEYS.BOOT);
   }
 
   preload(): void {
@@ -18,6 +19,6 @@ export class Boot extends BaseScene {
   create(): void {
     super.create();
 
-    this.scene.start('Preloader');
+    this.scene.start(SCENE_KEYS.PRELOAD);
   }
 }

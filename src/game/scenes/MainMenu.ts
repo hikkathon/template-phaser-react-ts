@@ -1,6 +1,7 @@
-import { scaleUtils } from '@/utils/ScaleUtils';
 import { GameObjects } from 'phaser';
-import { EventBus } from '../EventBus';
+import { SCENE_KEYS } from '../constants/scenes';
+import { EventBus } from '../core/event-bus';
+import { scaleUtils } from '../utils/scale-utils';
 import { BaseScene } from './BaseScene';
 
 export class MainMenu extends BaseScene {
@@ -14,7 +15,7 @@ export class MainMenu extends BaseScene {
   logoCallback: ((p: { x: number; y: number }) => void) | null = null;
 
   constructor() {
-    super('MainMenu');
+    super(SCENE_KEYS.MAIN_MENU);
   }
 
   create(): void {
@@ -90,7 +91,7 @@ export class MainMenu extends BaseScene {
       this.logoTween = null;
     }
 
-    this.scene.start('Game');
+    this.scene.start(SCENE_KEYS.GAME);
   }
 
   moveLogoTween(callback: ({ x, y }: { x: number; y: number }) => void) {

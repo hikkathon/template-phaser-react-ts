@@ -1,4 +1,5 @@
-import { EventBus } from '../EventBus';
+import { SCENE_KEYS } from '../constants/scenes';
+import { EventBus } from '../core/event-bus';
 import { BaseScene } from './BaseScene';
 
 export class GameOver extends BaseScene {
@@ -7,7 +8,7 @@ export class GameOver extends BaseScene {
   gameOverText: Phaser.GameObjects.Text;
 
   constructor() {
-    super('GameOver');
+    super(SCENE_KEYS.GAME_OVER);
   }
 
   create(): void {
@@ -34,7 +35,7 @@ export class GameOver extends BaseScene {
   }
 
   changeScene(): void {
-    this.scene.start('MainMenu');
+    this.scene.start(SCENE_KEYS.MAIN_MENU);
   }
 
   override refreshLayout(): void {
