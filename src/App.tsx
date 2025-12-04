@@ -3,6 +3,8 @@ import { UIGame } from '@/components/UIGame';
 import { MainMenu } from '@/game/scenes/MainMenu';
 import '@/styles/globals.css';
 import { useRef, useState } from 'react';
+import { ASSET_KEYS } from './game/constants/assets';
+import { GameEvents } from './game/constants/events';
 import { SCENE_KEYS } from './game/constants/scenes';
 import { EventBus } from './game/core/event-bus';
 
@@ -38,7 +40,7 @@ export const App = (): React.ReactNode => {
   const toggleMovementMode = (checked: boolean) => {
     setIsMovementModeActive(checked);
     moveSprite();
-    EventBus.emit('toggle-movement-mode', checked);
+    EventBus.emit(GameEvents.INPUT.MOVEMENT_MODE_TOGGLE, checked);
   };
 
   const addSprite = () => {
@@ -49,7 +51,7 @@ export const App = (): React.ReactNode => {
         const x = Phaser.Math.Between(64, scene.scale.width - 64);
         const y = Phaser.Math.Between(64, scene.scale.height - 64);
 
-        const star = scene.add.sprite(x, y, 'star');
+        const star = scene.add.sprite(x, y, ASSET_KEYS.STAR);
 
         scene.add.tween({
           targets: star,

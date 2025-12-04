@@ -1,5 +1,6 @@
 import { GameObjects } from 'phaser';
 import { ASSET_KEYS } from '../constants/assets';
+import { GameEvents } from '../constants/events';
 import { SCENE_KEYS } from '../constants/scenes';
 import { EventBus } from '../core/event-bus';
 import { scaleUtils } from '../utils/scale-utils';
@@ -20,7 +21,7 @@ export class MainMenu extends BaseScene {
   }
 
   create(): void {
-    this.background = this.add.image(0, 0, 'background');
+    this.background = this.add.image(0, 0, ASSET_KEYS.BACKGROUND);
 
     this.logo = this.add.image(0, 0, ASSET_KEYS.LOGO).setDepth(100);
 
@@ -37,8 +38,8 @@ export class MainMenu extends BaseScene {
 
     super.create();
 
-    EventBus.emit('current-scene-ready', this);
-    EventBus.on('toggle-movement-mode', this.toggleMovementMode);
+    EventBus.emit(GameEvents.SCENE.READY, this);
+    EventBus.on(GameEvents.INPUT.MOVEMENT_MODE_TOGGLE, this.toggleMovementMode);
   }
 
   toggleMovementMode = (checked: boolean) => {

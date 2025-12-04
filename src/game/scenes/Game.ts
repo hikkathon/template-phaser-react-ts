@@ -1,3 +1,5 @@
+import { ASSET_KEYS } from '../constants/assets';
+import { GameEvents } from '../constants/events';
 import { SCENE_KEYS } from '../constants/scenes';
 import { EventBus } from '../core/event-bus';
 import { BaseScene } from './BaseScene';
@@ -15,7 +17,7 @@ export class Game extends BaseScene {
     this.camera = this.cameras.main;
     this.camera.setBackgroundColor(0x00ff00);
 
-    this.background = this.add.image(0, 0, 'background');
+    this.background = this.add.image(0, 0, ASSET_KEYS.BACKGROUND);
     this.background.setAlpha(0.5);
 
     this.gameText = this.add
@@ -31,7 +33,7 @@ export class Game extends BaseScene {
 
     super.create();
 
-    EventBus.emit('current-scene-ready', this);
+    EventBus.emit(GameEvents.SCENE.READY, this);
   }
 
   changeScene(): void {

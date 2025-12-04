@@ -30,7 +30,7 @@ export class Preloader extends Scene {
     this.load.setPath('assets');
 
     this.load.image(ASSET_KEYS.LOGO, 'logo.png');
-    this.load.image('star', 'star.png');
+    this.load.image(ASSET_KEYS.STAR, 'star.png');
   }
 
   create(): void {
