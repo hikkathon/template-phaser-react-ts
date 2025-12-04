@@ -1,4 +1,5 @@
 import { GameObjects } from 'phaser';
+import { ASSET_KEYS } from '../constants/assets';
 import { SCENE_KEYS } from '../constants/scenes';
 import { EventBus } from '../core/event-bus';
 import { scaleUtils } from '../utils/scale-utils';
@@ -21,7 +22,7 @@ export class MainMenu extends BaseScene {
   create(): void {
     this.background = this.add.image(0, 0, 'background');
 
-    this.logo = this.add.image(0, 0, 'logo').setDepth(100);
+    this.logo = this.add.image(0, 0, ASSET_KEYS.LOGO).setDepth(100);
 
     this.title = this.add
       .text(0, 0, 'Main Menu', {
