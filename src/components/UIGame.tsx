@@ -22,15 +22,16 @@ export const UIGame: React.FC<UIContainerProps> = ({
   return (
     <div id="ui-container">
       <div className="flex justify-between items-center flex-row gap-2 p-2">
-        <Button variant="outline" onClick={onChangeScene}>
+        <Button variant="outline" className="ui-interactive" onClick={onChangeScene}>
           Change Scene
         </Button>
-        <Button variant="outline" onClick={onAddSprite}>
+        <Button variant="outline" className="ui-interactive" onClick={onAddSprite}>
           Add New Sprite
         </Button>
       </div>
       <div className="flex flex-wrap items-center flex-row p-2 gap-2">
         <Switch
+          className="ui-interactive"
           disabled={canMoveSprite}
           checked={isMovementModeActive}
           onCheckedChange={onToggleMovementMode}
